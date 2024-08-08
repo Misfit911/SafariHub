@@ -2,7 +2,9 @@
   <img src="images\Hub_title.png" alt="[YOUR_IMAGE_ALT]">
 </p>
 
-## Business Understanding
+<p align="center">
+  <img src="images\Screenshot 2024-08-08 115134.png" alt="">
+</p>
 
 ### Overview
 Tourism is a thriving industry in Kenya, and travelers often face the challenge of choosing the right destinations for their trips. Our project aims to address this problem by creating a recommendation system that assists users in discovering personalized tourist destinations in the country.
@@ -20,7 +22,9 @@ Beneficiaries include Travelers, Tourism Agencies and Local Business Owners.
 - "Model Recall score ≥ 80%"
 - "Model Accuracy ≥ 80%"
 
-## Data Understanding
+<p align="center">
+  <img src="images\Screenshot 2024-08-08 115159.png" alt="">
+</p>
 
 ### Data Sources and Relevance
 - The dataset was scraped using the open source **APIFY Tripadvisor Scraper**.
