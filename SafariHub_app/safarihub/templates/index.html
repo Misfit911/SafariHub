@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Arrange content vertically */
+            background: url('{% static "images/wave-haikei-right.png" %}');
+            background-attachment: fixed;
+            background-size:cover;
+            background-repeat: no-repeat;
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+        .sidebar {
+            width: 150px; 
+            background: url('{% static "images/wave-haikei.png" %}');
+            background-size:auto;
+            background-repeat: no-repeat;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color:#1d120a
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #ffffffcc;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #333;
+            padding: 10px 0;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        .content-wrapper {
+            margin-left: 170px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            /* align-items: center; */
+            padding: 20px;
+        }
+
+        .list-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .list-container h1 {
+            margin-bottom: 20px;
+            color: #1d120a;
+        }
+
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* justify-content: center; */
+        }
+
+        .item {
+            width: calc(33.33% - 20px); /* 3 items per row with gap */
+            background-color: #f9f9f900;
+            padding: 19px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            
+        }
+
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .item h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .item p {
+            font-size: 14px;
+            color: #ffffffe0;
+            margin: 5px 0;
+        }
+
+        .load-more-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .load-more-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SafariHub</h2>
+        <h3>Discover</h3>
+        <a href="#home">Home</a>
+        <a href="#popular">Popular</a>
+        <a href="#tours">Tours</a>
+        <h3>Library</h3>
+        <a href="#personalized">Personalized picks</a>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Attractions Section -->
+        <div class="list-container" id="attractions">
+            <h1>Top Attractions</h1>
+            <div class="item-list" id="attractions-list">
+                {% for attraction in attractions|slice:":100" %}
+                <div class="item">
+                    <a href="{% url 'attraction_detail' attraction_name=attraction.name %}">
+                        <img src="{{ attraction.image }}" alt="{{ attraction.name }}">
+                    </a>
+                    <h2>{{ attraction.name }}</h2>
+                    <p>{{ attraction.location }}</p>
+                    <p>Rating: {{ attraction.rating }}</p>
+                    <p>Number of Reviews: {{ attraction.numberOfReviews }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="load-more-btn" onclick="loadMore('attractions')">Load More</button>
+        </div>
+
+        <!-- Hotels Section -->
+        <div class="list-container" id="hotels">
+            <h1>Top Hotels</h1>
+            <div class="item-list" id="hotels-list">
+                {% for hotel in hotels|slice:":100" %}
+                <div class="item">
+                    <a href="{% url 'hotel_detail' hotel_name=hotel.name %}">
+                        <img src="{{ hotel.image }}" alt="{{ hotel.name }}">
+                    </a>
+                    <h2>{{ hotel.name }}</h2>
+                    <p>{{ hotel.location }}</p>
+                    <p>Rating: {{ hotel.rating }}</p>
+                    <p>{{ hotel.priceRange }}</p>
+                    <p>Price: {{ hotel.priceLevel }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="load-more-btn" onclick="loadMore('hotels')">Load More</button>
+        </div>
+
+        <!-- Tour Operators Section -->
+        <div class="list-container" id="tour_operators">
+            <h1>Find Tour Operators</h1>
+            <div class="item-list" id="tour-operators-list">
+                {% for tour in tours|slice:":10" %}
+                <div class="item">
+                    <a href="{% url 'tourop_detail' tourop_name=tour.name %}">
+                        <img src="{{ tour.image }}" alt="{{ tour.name }}">
+                    </a>
+                    <h2>{{ tour.name }}</h2>
+                    <p>{{ tour.location }}</p>
+                    <p>Rating: {{ tour.rating }}</p>
+                    <p>Number of Reviews: {{ tour.numberOfReviews }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="load-more-btn" onclick="loadMore('tours')">Load More</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to load more items for each section
+        function loadMore(category) {
+            const container = document.getElementById(`${category}-list`);
+            const items = container.querySelectorAll('.item');
+            const button = document.querySelector(`.load-more-btn[onclick="loadMore('${category}')"]`);
+            
+            // Determine how many items are currently visible
+            const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+            let index = visibleItems.length;
+            
+            // Show the next set of items
+            for (; index < visibleItems.length + 4 && index < items.length; index++) {
+                items[index].style.display = 'block';
+            }
+            
+            // Hide the button if all items are visible
+            if (index >= items.length) {
+                button.style.display = 'none';
+            }
+        }
+
+        // Initially hide items beyond the first 3
+        document.addEventListener('DOMContentLoaded', () => {
+            ['attractions', 'hotels', 'tour_operators'].forEach(category => {
+                const container = document.getElementById(`${category}-list`);
+                const items = container.querySelectorAll('.item');
+                items.forEach((item, index) => {
+                    if (index >= 4) item.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
