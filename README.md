@@ -46,7 +46,7 @@ Our project has significant implications for travelers, tourism agencies, and lo
 ## Structure of this Repository
 
 
-`├── SafariHub_app/`           Django web app deployement
+`├── SafariHub_app/`           Deployement
 
 `├──  data/`                   Additional data files
 
@@ -54,9 +54,9 @@ Our project has significant implications for travelers, tourism agencies, and lo
   
 `├── README.md`                README.md 
  
-`├── SAFARIHUB.docx`           SAFARIHUB report document
+`├── SAFARIHUB.docx`           Report document
  
-`├── SafariHub.pdf`            SAFARIHUB report in PDF format
+`├── SafariHub.pdf`            Report in PDF format
  
 `└── safarihub.ipynb`          Jupyter notebook file
   
