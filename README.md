@@ -43,23 +43,23 @@ We propose building a hybrid recommendation system that combines collaborative f
 ## Conclusion
 Our project has significant implications for travelers, tourism agencies, and local businesses. By solving this problem, we contribute to enhancing travel experiences and promoting local economies.
 
-## Repository Structure
+## Structure of this Repository
 
 
-`├── SafariHub_app/`           # Django web app deployement
+`├── SafariHub_app/`           Django web app deployement
 
-`├──  data/`                 # Additional data files
+`├──  data/`                   Additional data files
 
-`├── images/ `                # Images for Django web app
+`├── images/ `                 Images for Django web app
   
-`├── README.md`                 # README.md 
+`├── README.md`                README.md 
  
-`├── SAFARIHUB.docx`            # SAFARIHUB report document
+`├── SAFARIHUB.docx`           SAFARIHUB report document
  
-`├── SafariHub.pdf`             # SAFARIHUB report in PDF format
+`├── SafariHub.pdf`            SAFARIHUB report in PDF format
  
-`└── safarihub.ipynb`           # Jupyter notebook file
+`└── safarihub.ipynb`          Jupyter notebook file
   
-`└── .ppt file`                 # Presentation
+`└── .ppt file`                Presentation
    
 
