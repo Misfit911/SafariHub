@@ -48,9 +48,9 @@ Our project has significant implications for travelers, tourism agencies, and lo
 
 `├── SafariHub_app/`           Deployement
 
-`├──  data/`                   Additional data files
+`├──  data`                   Additional data files
 
-`├── images/ `                 Images for Django web app
+`├── images`                 Images for Django web app
   
 `├── README.md`                README.md 
  
