@@ -46,7 +46,7 @@ Our project has significant implications for travelers, tourism agencies, and lo
 ## Structure of this Repository
 
 
-`├── SafariHub_app/`           Deployement
+`├── SafariHub_app`           Deployement
 
 `├──  data`                   Additional data files
 
