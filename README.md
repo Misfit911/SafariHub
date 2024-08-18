@@ -59,7 +59,6 @@ Our project has significant implications for travelers, tourism agencies, and lo
 `├── SafariHub.pdf`            Report in PDF format
  
 `└── safarihub.ipynb`          Jupyter notebook file
-  
-`└── .ppt file`                Presentation
+
    
 
