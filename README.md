@@ -7,7 +7,7 @@
 
 SafariHub’s recommender system is designed to provide personalized recommendations for tour destinations, hotels, and tour operators in Kenya. By leveraging user preferences and historical interactions, the system aims to assist travelers in making informed choices. This can greatly enhance the overall travel experience for users.
 
----
+
 
 ## Table Of Contents
 
@@ -26,7 +26,7 @@ SafariHub’s recommender system is designed to provide personalized recommendat
     - [Contributors](#contributors)
     - [Repository Structure](#repository-structure)
 
----
+
 
 ## Business Understanding
 ### Overview
@@ -48,7 +48,7 @@ Travelers struggle to select the most suitable tourist destinations for their tr
 - Model Recall score ≥ 80%
 - Model Accuracy ≥ 80%
 
----
+
 
 ## Data Understanding
 
@@ -56,7 +56,7 @@ Travelers struggle to select the most suitable tourist destinations for their tr
 - It contains information about tourist destinations in Kenya, including their names, categories, ratings, review counts, images, and other relevant features.
 - The data's relevance lies in its ability to help us recommend destinations to travelers based on their preferences and historical interactions.
 
----
+
 
 ## Modeling
 
@@ -172,7 +172,7 @@ A hybrid recommendation system that combines NLP and content-based approaches to
 
 >The KNN model therefore is the most suitable option for recommending hotels.
 
----
+
 
 ## Deployment
 ![django](https://img.shields.io/badge/django-209117?style=for-the-badge&logo=django&logoColor=white)
@@ -184,7 +184,7 @@ The model was deployed using Django framework.
 The user clicks on an image to generate recommendations.
 
 <p align="center">
-    <img src="images\LakeNaivasharecommendation.png" alt="LakeNaivasharecommendation" width="650" height="350" />
+    <img src="images\LakeNaivasharecommendation.png" alt="LakeNaivasharecommendation" width="1000" height="550" />
 </p>
 
 
@@ -208,7 +208,7 @@ python manage.py runserver
 python3 manage.py runserver
 ```
 
----
+
 
 ## Contributors
 
@@ -219,7 +219,7 @@ python3 manage.py runserver
 - [Phinidy George](https://github.com/BigTime5)
 - [Nashon Okumu](https://github.com/NashonOkumu)
 
----
+
 
 ## Repository Structure
 
