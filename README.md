@@ -170,6 +170,7 @@ A hybrid recommendation system that combines NLP and content-based approaches to
 
 - The KNN model offers recommendations that are more consistent in terms of proximity to the target hotel, which is an essential factor in making relevant recommendations.
 
+
 >The KNN model therefore is the most suitable option for recommending hotels.
 
 
@@ -184,7 +185,7 @@ The model was deployed using Django framework.
 The user clicks on an image to generate recommendations.
 
 <p align="center">
-    <img src="images\LakeNaivasharecommendation.png" alt="LakeNaivasharecommendation" width="1000" height="550" />
+    <img src="images\LakeNaivasharecommendation.png" alt="LakeNaivasharecommendation" width="850" height="425" />
 </p>
 
 
