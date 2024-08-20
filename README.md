@@ -20,6 +20,8 @@ SafariHub’s recommender system is designed to provide personalized recommendat
     - [Data Understanding](#data-understanding)
     - [Modeling](#modeling)
         - [Evaluation](#evaluation)
+        - [Conclusion](#conclusion)
+        - [Recommendations](#recommendations)
     - [Deployment](#deployment)
         - [Example Usage](#example-usage)
         - [Installation](#installation)
@@ -171,9 +173,23 @@ A hybrid recommendation system that combines NLP and content-based approaches to
 - The KNN model offers recommendations that are more consistent in terms of proximity to the target hotel, which is an essential factor in making relevant recommendations.
 
 
->The KNN model therefore is the most suitable option for recommending hotels.
+<img src="images\eval.png">
 
+### Conclusion
 
+>The KNN model stands out as the most reliable option for providing recommendations, especially in terms of consistency and lower error metrics compared to other models. It also balances precision and recall well, making it more suitable for real-world applications. The SVM model may excel in specific scenarios, particularly where classification of "Not Similar" entities is more critical. However, it underperforms in recommending similar items compared to the KNN model.
+
+### Recommendations
+
+1. Model Tuning: Continue fine-tuning the KNN model to further reduce errors and improve classification metrics, particularly for the "Similar" class. This could involve adjusting the number of neighbors or using weighted distances.
+
+2. Hybrid Model Approach: Consider combining the strengths of both KNN and Cosine Similarity models in a hybrid approach, where one model is used for initial filtering and the other for fine-tuning recommendations.
+
+3. Develop and integrate advanced recommendation algorithms that curate personalized travel itineraries based on individual preferences, historical travel data, and real-time user inputs. This will enhance the relevance and appeal of suggested destinations and activities.
+
+4. Provide real-time updates on local events, weather conditions, and special offers relevant to the traveler’s current or upcoming location. This can be achieved through push notifications or in-app alerts, ensuring that travelers have the most up-to-date information.
+
+5. Consider expanding the recommendation system to include data and insights from other countries. This will allow for a broader range of travel options and cross-country promotional opportunities.
 
 ## Deployment
 ![django](https://img.shields.io/badge/django-209117?style=for-the-badge&logo=django&logoColor=white)
