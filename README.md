@@ -18,6 +18,7 @@ SafariHub’s recommender system is designed to provide personalized recommendat
         - [Problem Statement](#problem-statement)
         - [Objectives](#objectives)
     - [Data Understanding](#data-understanding)
+    - [Data Analysis](#data-analysis)
     - [Modeling](#modeling)
         - [Evaluation](#evaluation)
         - [Conclusion](#conclusion)
@@ -45,10 +46,12 @@ Travelers struggle to select the most suitable tourist destinations for their tr
 
 ### Objectives
 
-- Build a collaborative filtering model to recommend destinations
-- Reduce cold-start problem by incorporating content-based features
-- Model Recall score ≥ 80%
-- Model Accuracy ≥ 80%
+- Build a collaborative filtering model to recommend destinations.
+- Reduce cold-start problem by incorporating content-based features.
+- Use NLP to recommend items based on sentiment analysis of reviews.
+- Generate insights from user interaction data to understand trends, preferences, and popular destinations.
+- Suggest a wide range of destinations, including both popular and less-known locations to cater to different travel preferences.
+- Promote local hotels, destinations and tour agents through our web application.
 
 
 
@@ -58,6 +61,14 @@ Travelers struggle to select the most suitable tourist destinations for their tr
 - It contains information about tourist destinations in Kenya, including their names, categories, ratings, review counts, images, and other relevant features.
 - The data's relevance lies in its ability to help us recommend destinations to travelers based on their preferences and historical interactions.
 
+## Data Analysis
+
+The following were found to be the most common double combination of words used in reviews:
+<p align="center">
+    <img src="images\top_10_common_bigrams.png" alt="top_10_common_bigrams.png" width="850" height="500" />
+</p>
+
+It gives insights to the most popular activities in Kenya such as `game drives` and `day safaris`.
 
 
 ## Modeling
@@ -172,8 +183,9 @@ A hybrid recommendation system that combines NLP and content-based approaches to
 
 - The KNN model offers recommendations that are more consistent in terms of proximity to the target hotel, which is an essential factor in making relevant recommendations.
 
-
-<img src="images\eval.png">
+<p align="center">
+    <img src="images\eval.png" alt="top_10_common_bigrams.png" width="700" height="500" />
+</p>
 
 ### Conclusion
 
@@ -209,13 +221,13 @@ The user clicks on an image to generate recommendations.
 
 Steps:
 ```python
-git clone https://github.com/Misfit911/SafariHub
-```
-```python
-pip install -r requirements.txt
+git clone https://github.com/Misfit911/SafariHub.git
 ```
 ```python
 cd SafariHub_app
+```
+```python
+pip install -r requirements.txt
 ```
 ```python
 # Windows
