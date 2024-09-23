@@ -1,0 +1,96 @@
+import { HomeIcon, TrendingUpIcon, MapIcon, UserIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select } from "@/components/ui/select"
+
+export default function Component() {
+  return (
+    <div className="flex min-h-screen bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center bg-no-repeat">
+      <aside className="w-48 bg-[url('/placeholder.svg?height=1080&width=150')] bg-cover bg-no-repeat fixed h-full p-4 flex flex-col shadow-md">
+        <h2 className="text-2xl font-bold mb-10 text-primary">SafariHub</h2>
+        <h3 className="text-sm uppercase text-primary-foreground/80 mb-2">Discover</h3>
+        <Button variant="ghost" className="justify-start mb-2" asChild>
+          <a href="#home">
+            <HomeIcon className="mr-2 h-4 w-4" />
+            Home
+          </a>
+        </Button>
+        <Button variant="ghost" className="justify-start mb-2" asChild>
+          <a href="#popular">
+            <TrendingUpIcon className="mr-2 h-4 w-4" />
+            Popular
+          </a>
+        </Button>
+        <Button variant="ghost" className="justify-start mb-2" asChild>
+          <a href="#tours">
+            <MapIcon className="mr-2 h-4 w-4" />
+            Tours
+          </a>
+        </Button>
+        <h3 className="text-sm uppercase text-primary-foreground/80 mt-4 mb-2">Library</h3>
+        <Button variant="ghost" className="justify-start mb-2" asChild>
+          <a href="#personalized">
+            <UserIcon className="mr-2 h-4 w-4" />
+            Personalized picks
+          </a>
+        </Button>
+      </aside>
+      <main className="flex-1 ml-52 p-6">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="flex flex-wrap gap-4">
+            <Input className="flex-1" placeholder="Search for attractions, hotels, or tour operators..." />
+            <Select>
+              <option value="">Location</option>
+              {/* Add location options here */}
+            </Select>
+            <Select>
+              <option value="">Rating</option>
+              {/* Add rating options here */}
+            </Select>
+            <Select>
+              <option value="">Price Level</option>
+              {/* Add price level options here */}
+            </Select>
+            <Select>
+              <option value="">Province</option>
+              {/* Add province options here */}
+            </Select>
+            <Select>
+              <option value="">Number of Reviews</option>
+              {/* Add review count options here */}
+            </Select>
+          </div>
+          <section>
+            <h1 className="text-3xl font-bold mb-6 text-primary">Top Attractions</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <div key={i} className="bg-card rounded-lg overflow-hidden shadow-md">
+                  <img
+                    alt="Attraction"
+                    className="w-full h-48 object-cover"
+                    height="200"
+                    src="/placeholder.svg"
+                    style={{
+                      aspectRatio: "300/200",
+                      objectFit: "cover",
+                    }}
+                    width="300"
+                  />
+                  <div className="p-4">
+                    <h2 className="text-lg font-semibold mb-2">Attraction Name</h2>
+                    <p className="text-sm text-muted-foreground mb-1">Location</p>
+                    <p className="text-sm text-muted-foreground mb-1">Rating: 4.5</p>
+                    <p className="text-sm text-muted-foreground">Number of Reviews: 1000</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Button className="mt-6" variant="outline">
+              Load More
+            </Button>
+          </section>
+        </div>
+      </main>
+    </div>
+  )
+}

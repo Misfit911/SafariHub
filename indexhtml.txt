@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; /* Arrange content vertically */
+            background: url('{% static "images/wave-haikei-right.png" %}');
+            background-attachment: fixed;
+            background-size:cover;
+            background-repeat: no-repeat;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .sidebar {
+            width: 150px; 
+            background: url('{% static "images/wave-haikei.png" %}');
+            background-size:auto;
+            background-repeat: no-repeat;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color:#1d120a;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #ffffffcc;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            margin-left: 170px; /* Space for sidebar */
+            padding: 20px;
+        }
+
+        .content section {
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-attractions {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .grid-hotels, .grid-tours {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        .grid-item {
+            text-align: center;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .grid-item h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .grid-item p {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>SafariHub</h2>
+        <!-- Add sidebar content here -->
+    </div>
+    <div class="content">
+        <section class="attractions">
+            <h2>Attractions</h2>
+            <p>Explore top attractions</p>
+            <div class="grid grid-attractions">
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Attraction 1">
+                    <h3>Attraction 1</h3>
+                    <p>Description of attraction</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Attraction 2">
+                    <h3>Attraction 2</h3>
+                    <p>Description of attraction</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Attraction 3">
+                    <h3>Attraction 3</h3>
+                    <p>Description of attraction</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Attraction 4">
+                    <h3>Attraction 4</h3>
+                    <p>Description of attraction</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="hotels">
+            <h2>Hotels</h2>
+            <p>Find the best hotels</p>
+            <div class="grid grid-hotels">
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 1">
+                    <h3>Hotel 1</h3>
+                    <p>R&B</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 2">
+                    <h3>Hotel 2</h3>
+                    <p>Indie pop</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 3">
+                    <h3>Hotel 3</h3>
+                    <p>Hip hop</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 4">
+                    <h3>Hotel 4</h3>
+                    <p>Electronic</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 5">
+                    <h3>Hotel 5</h3>
+                    <p>R&B</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Hotel 6">
+                    <h3>Hotel 6</h3>
+                    <p>Rock</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tours">
+            <h2>Tour Operators</h2>
+            <p>Top tour operators for your journey</p>
+            <div class="grid grid-tours">
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 1">
+                    <h3>Tour Operator 1</h3>
+                    <p>Safari</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 2">
+                    <h3>Tour Operator 2</h3>
+                    <p>Adventure</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 3">
+                    <h3>Tour Operator 3</h3>
+                    <p>Luxury</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 4">
+                    <h3>Tour Operator 4</h3>
+                    <p>Eco-friendly</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 5">
+                    <h3>Tour Operator 5</h3>
+                    <p>Group tours</p>
+                </div>
+                <div class="grid-item">
+                    <img src="/placeholder.svg" alt="Tour Operator 6">
+                    <h3>Tour Operator 6</h3>
+                    <p>Private tours</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

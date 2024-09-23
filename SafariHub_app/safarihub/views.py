@@ -101,11 +101,12 @@ hotels = hotel_data.to_dict(orient='records')
 tours = tours_data.to_dict(orient='records')
 
 def index(request):
-
+    locations = sorted(attraction_data['location'].unique().tolist())
     return render(request, 'index.html', {
         'attractions': attractions,
         'hotels': hotels,
         'tours': tours,
+        'locations': locations,
     })
 
 
@@ -120,10 +121,10 @@ def recommend_items(model, data, names, item_name, category, top_n=5):
     # Select the appropriate DataFrame based on category
     if category == 'attraction':
         recommended_data = attraction_data[attraction_data['name'].isin(recommended_names)]
-        recommendations = recommended_data[['name', 'rating', 'location', 'image']].to_dict('records')
+        recommendations = recommended_data[['name', 'rating', 'numberOfReviews', 'location', 'image']].to_dict('records')
     elif category == 'hotel':
         recommended_data = hotel_data[hotel_data['name'].isin(recommended_names)]
-        recommendations = recommended_data[['name', 'rating', 'priceRange', 'priceLevel', 'image']].to_dict('records')
+        recommendations = recommended_data[['name', 'rating', 'numberOfReviews', 'priceRange', 'priceLevel', 'image']].to_dict('records')
     elif category == 'tour operator':
         recommended_data = tours_data[tours_data['name'].isin(recommended_names)]
         recommendations = recommended_data[['name', 'rating', 'numberOfReviews', 'main_bigram', 'image']].to_dict('records')

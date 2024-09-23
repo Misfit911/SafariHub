@@ -65,7 +65,7 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            /* align-items: center; */
+            /* align-items: left; */
             padding: 20px;
         }
 
@@ -83,7 +83,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            /* justify-content: center; */
+            
         }
 
         .item {
@@ -124,6 +124,37 @@
         .load-more-btn:hover {
             background-color: #3e8e41;
         }
+
+        .search-filter-container {
+            display: flex;
+            justify-content: center; /* Center the search bar and filter */
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .filter-dropdown {
+            margin-right: 10px;
+        }
+
+        .filter-dropdown select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -137,98 +168,158 @@
         <a href="#personalized">Personalized picks</a>
     </div>
 
+    <!-- Add search and filter container above the list-container -->
     <div class="content-wrapper">
-        <!-- Attractions Section -->
-        <div class="list-container" id="attractions">
-            <h1>Top Attractions</h1>
-            <div class="item-list" id="attractions-list">
-                {% for attraction in attractions|slice:":100" %}
-                <div class="item">
-                    <a href="{% url 'attraction_detail' attraction_name=attraction.name %}">
-                        <img src="{{ attraction.image }}" alt="{{ attraction.name }}">
-                    </a>
-                    <h2>{{ attraction.name }}</h2>
-                    <p>{{ attraction.location }}</p>
-                    <p>Rating: {{ attraction.rating }}</p>
-                    <p>Number of Reviews: {{ attraction.numberOfReviews }}</p>
-                </div>
-                {% endfor %}
+        <div class="search-filter-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for attractions, hotels, or tour operators...">
             </div>
-            <button class="load-more-btn" onclick="loadMore('attractions')">Load More</button>
+            <div class="filter-dropdown">
+                <select id="locationFilter">
+                    <option value="">Location</option>
+                    {% for loc in locations %}
+                    <option value="{{ loc }}">{{ loc }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
 
-        <!-- Hotels Section -->
-        <div class="list-container" id="hotels">
-            <h1>Top Hotels</h1>
-            <div class="item-list" id="hotels-list">
-                {% for hotel in hotels|slice:":100" %}
-                <div class="item">
-                    <a href="{% url 'hotel_detail' hotel_name=hotel.name %}">
-                        <img src="{{ hotel.image }}" alt="{{ hotel.name }}">
-                    </a>
-                    <h2>{{ hotel.name }}</h2>
-                    <p>{{ hotel.location }}</p>
-                    <p>Rating: {{ hotel.rating }}</p>
-                    <p>{{ hotel.priceRange }}</p>
-                    <p>Price: {{ hotel.priceLevel }}</p>
+        <!-- <div class="content-wrapper"> -->
+            <!-- Attractions Section -->
+            <div class="list-container" id="attractions">
+                <h1>Find Attractions</h1>
+                <div class="item-list" id="attractions-list">
+                    {% for attraction in attractions|slice:":149" %}
+                    <div class="item">
+                        <a href="{% url 'attraction_detail' attraction_name=attraction.name %}">
+                            <img src="{{ attraction.image }}" alt="{{ attraction.name }}" loading="lazy">
+                        </a>
+                        <h2>{{ attraction.name }}</h2>
+                        <p>{{ attraction.location }}</p>
+                        <p>Rating: {{ attraction.rating }}</p>
+                        <p>Number of Reviews: {{ attraction.numberOfReviews }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <button class="load-more-btn" onclick="loadMore('attractions')">Load More</button>
             </div>
-            <button class="load-more-btn" onclick="loadMore('hotels')">Load More</button>
-        </div>
 
-        <!-- Tour Operators Section -->
-        <div class="list-container" id="tour_operators">
-            <h1>Find Tour Operators</h1>
-            <div class="item-list" id="tour-operators-list">
-                {% for tour in tours|slice:":10" %}
-                <div class="item">
-                    <a href="{% url 'tourop_detail' tourop_name=tour.name %}">
-                        <img src="{{ tour.image }}" alt="{{ tour.name }}">
-                    </a>
-                    <h2>{{ tour.name }}</h2>
-                    <p>{{ tour.location }}</p>
-                    <p>Rating: {{ tour.rating }}</p>
-                    <p>Number of Reviews: {{ tour.numberOfReviews }}</p>
+            <!-- Hotels Section -->
+            <div class="list-container" id="hotels">
+                <h1>Find Hotels</h1>
+                <div class="item-list" id="hotels-list">
+                    {% for hotel in hotels|slice:":1061" %}
+                    <div class="item">
+                        <a href="{% url 'hotel_detail' hotel_name=hotel.name %}">
+                            <img src="{{ hotel.image }}" alt="{{ hotel.name }}" loading="lazy">
+                        </a>
+                        <h2>{{ hotel.name }}</h2>
+                        <p>{{ hotel.location }}</p>
+                        <p>Rating: {{ hotel.rating }}</p>
+                        <p>{{ hotel.priceRange }}</p>
+                        <p>Price: {{ hotel.priceLevel }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <button class="load-more-btn" onclick="loadMore('hotels')">Load More</button>
             </div>
-            <button class="load-more-btn" onclick="loadMore('tours')">Load More</button>
-        </div>
-    </div>
 
-    <script>
-        // Function to load more items for each section
-        function loadMore(category) {
-            const container = document.getElementById(`${category}-list`);
-            const items = container.querySelectorAll('.item');
-            const button = document.querySelector(`.load-more-btn[onclick="loadMore('${category}')"]`);
-            
-            // Determine how many items are currently visible
-            const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
-            let index = visibleItems.length;
-            
-            // Show the next set of items
-            for (; index < visibleItems.length + 4 && index < items.length; index++) {
-                items[index].style.display = 'block';
-            }
-            
-            // Hide the button if all items are visible
-            if (index >= items.length) {
-                button.style.display = 'none';
-            }
-        }
+            <!-- Tour Operators Section -->
+            <div class="list-container" id="tour_operators">
+                <h1>Find Tour Operators</h1>
+                <div class="item-list" id="tour-operators-list">
+                    {% for tour in tours|slice:":10" %}
+                    <div class="item">
+                        <a href="{% url 'tourop_detail' tourop_name=tour.name %}">
+                            <img src="{{ tour.image }}" alt="{{ tour.name }}" loading="lazy">
+                        </a>
+                        <h2>{{ tour.name }}</h2>
+                        <p>{{ tour.location }}</p>
+                        <p>Rating: {{ tour.rating }}</p>
+                        <p>Number of Reviews: {{ tour.numberOfReviews }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="load-more-btn" onclick="loadMore('tours')">Load More</button>
+            </div>
+        <!-- </div> -->
 
-        // Initially hide items beyond the first 3
-        document.addEventListener('DOMContentLoaded', () => {
-            ['attractions', 'hotels', 'tour_operators'].forEach(category => {
+        <script>
+            // Function to load more items for each section
+            function loadMore(category) {
                 const container = document.getElementById(`${category}-list`);
                 const items = container.querySelectorAll('.item');
-                items.forEach((item, index) => {
-                    if (index >= 4) item.style.display = 'none';
+                const button = document.querySelector(`.load-more-btn[onclick="loadMore('${category}')"]`);
+                
+                // Determine how many items are currently visible
+                const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
+                let index = visibleItems.length;
+                
+                // Show the next set of items
+                for (; index < visibleItems.length + 4 && index < items.length; index++) {
+                    items[index].style.display = 'block';
+                }
+                
+                // Hide the button if all items are visible
+                if (index >= items.length) {
+                    button.style.display = 'none';
+                }
+            }
+
+            // Initially hide items beyond the first 4
+            document.addEventListener('DOMContentLoaded', () => {
+                ['attractions', 'hotels', 'tour_operators'].forEach(category => {
+                    const container = document.getElementById(`${category}-list`);
+                    const items = container.querySelectorAll('.item');
+                    items.forEach((item, index) => {
+                        if (index >= 4) item.style.display = 'none';
+                    });
                 });
             });
-        });
-    </script>
+
+            document.getElementById('searchInput').addEventListener('keyup', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const items = document.querySelectorAll('.item');
+                    items.forEach(item => {
+                        const name = item.querySelector('h2').textContent.toLowerCase();
+                        if (name.includes(searchTerm)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+
+            function applyFilters() {
+                const locationFilter = document.getElementById('locationFilter').value.toLowerCase();
+                const ratingFilter = document.getElementById('ratingFilter').value;
+                const priceLevelFilter = document.getElementById('priceLevelFilter').value.toLowerCase();
+                const provinceFilter = document.getElementById('provinceFilter').value.toLowerCase();
+                const reviewsFilter = document.getElementById('reviewsFilter').value;
+
+                const items = document.querySelectorAll('.item');
+                items.forEach(item => {
+                    const location = item.querySelector('p:nth-child(3)').textContent.toLowerCase();
+                    const rating = item.querySelector('p:nth-child(4)').textContent;
+                    const priceLevel = item.dataset.priceLevel.toLowerCase();
+                    const province = item.dataset.province.toLowerCase();
+                    const reviews = item.querySelector('p:nth-child(5)').textContent;
+
+                    if ((locationFilter === "" || location.includes(locationFilter)) &&
+                        (ratingFilter === "" || rating.includes(ratingFilter)) &&
+                        (priceLevelFilter === "" || priceLevel.includes(priceLevelFilter)) &&
+                        (provinceFilter === "" || province.includes(provinceFilter)) &&
+                        (reviewsFilter === "" || reviews.includes(reviewsFilter))) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+
+            // Apply filters when the location dropdown changes
+            document.getElementById('locationFilter').addEventListener('change', applyFilters);
+        </script>
+    </div>    
 </body>
 </html>
